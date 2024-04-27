@@ -1,9 +1,44 @@
+/*  Where I'm at:
+collectEmployees function : IT WORKS!! Except that if they leave the salary box empty, it says Nan and I want it to say 0. A word will say 0, and a string becomes a number.
+displayAverageSalary function: not started
+displayRandomEmployee function: not started
+
+-------------------------------------------------------------------------------------------------------------*/
+
+// Made an empty string to store employee objects
+const employees = [];
+
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
+  // repeats as long as confirm("Add another employee?") = true
+  do {
+    let firstName = prompt('Enter first name');
+    let lastName = prompt('Enter last name');
+    let salary = prompt('Enter salary');
+
+    // if a word is entered, default to 0, then turn "num" to num
+    if (isNaN(salary)) {
+      salary = 0;
+      } else {      
+        salary = parseInt(salary);
+      }
+
+    // make a new employee object where properties : variables
+    let employee = {
+      firstName : firstName,
+      lastName : lastName,
+      salary : salary,
+      }
+
+      // add employee to employees array
+      employees.push(employee);
+  }
+    while (confirm("Add another"));
+    // return the array
+    return(employees);
 }
 
 // Display the average salary
