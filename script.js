@@ -1,14 +1,19 @@
 /*  Where I'm at:
-collectEmployees function : IT WORKS!! Except that if they leave the salary box empty, it says Nan and I want it to say 0. A word will say 0, and a string becomes a number. I don't like that 'const employees = [];' is outside the collectEmployees function, but it needs to be accessible to the other functions and I haven't found a better way yet.
-displayAverageSalary function: It works!
-displayRandomEmployee function: not started
+All functions are functioning!
+
+Potential improvements:
+- If someone enters not a number in the salary, it will default to 0. Also, "5" will become 5. But if the prompt is left blank, it will become NaN. I have tried saying if salary == undefined or null or NaN, salary = 0, but it still shows Nan.
+
+- The '(employeesArray)' parameter for the displayAverageSalary and getRandomEmployee functions was pre-written in the starter code, but is not being used. Try renaming my employees array to match their employeesArray array and see if the code breaks.
+
+- I don't like that 'const employees = [];' is outside the collectEmployees function, but it needs to be accessible to the other functions and I haven't found a better way yet.
 
 -------------------------------------------------------------------------------------------------------------*/
 
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-const employees = [];
+const employees = []; // Empty array to put employee objects into
 
 // Collect employee data
 const collectEmployees = function() {
@@ -19,9 +24,9 @@ const collectEmployees = function() {
     let salary = prompt('Enter salary');  //change string to number, a word will default to 0
 
     if (isNaN(salary)) {
-      salary = 0;
+      salary = 0;  // words become 0
     } else {
-      salary = parseInt(salary);
+      salary = parseInt(salary);  // change string to number
     }
 
     // make a new employee object where properties : variables
@@ -31,28 +36,27 @@ const collectEmployees = function() {
       salary : salary,
       }
 
-      // add employee to employees array
-      employees.push(employee);
+      employees.push(employee); // add employee to employees array
+
   }
     while (confirm("Add another"));
-    // return the array
-    return(employees);
+    return(employees); // return the array
+
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
   const salaries = employees.map(employee => employee.salary);  // extracts the salaries out of the employees array
-  const sumSalaries = salaries.reduce((total, salary) => total + salary, 0);   // adds the salaries together
+  const sumSalaries = salaries.reduce((total, salary) => total + salary, 0);  // adds the salaries together
   const averageSalary = sumSalaries / salaries.length;  // calculates the average
 
   console.log(`Average Salary: ${averageSalary}`);
 }
 
-
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+  const random = employees [ Math.floor (Math.random() * employees.length)];  // get random employee
+  console.log(`Congrats ${random.firstName} ${random.lastName}, you're the winner!`);
 }
 
 /*
