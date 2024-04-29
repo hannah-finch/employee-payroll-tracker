@@ -1,15 +1,3 @@
-/*  Where I'm at:
-All functions are functioning!
-
-Potential improvements:
-- If someone enters not a number in the salary, it will default to 0. Also, "5" will become 5. But if the prompt is left blank, it will become NaN. I have tried saying if salary == undefined or null or NaN, salary = 0, but it still shows Nan.
-
-- The '(employeesArray)' parameter for the displayAverageSalary and getRandomEmployee functions was pre-written in the starter code, but is not being used. Try renaming my employees array to match their employeesArray array and see if the code breaks.
-
-- I don't like that 'const employees = [];' is outside the collectEmployees function, but it needs to be accessible to the other functions and I haven't found a better way yet.
-
--------------------------------------------------------------------------------------------------------------*/
-
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
@@ -23,8 +11,8 @@ const collectEmployees = function() {
     let lastName = prompt('Enter last name');
     let salary = prompt('Enter salary');  //change string to number, a word will default to 0
 
-    if (isNaN(salary)) {
-      salary = 0;  // words become 0
+    if (isNaN(salary) || salary == "") {
+      salary = 0;  // words and empty strings become 0
     } else {
       salary = parseInt(salary);  // change string to number
     }
@@ -37,15 +25,13 @@ const collectEmployees = function() {
       }
 
       employees.push(employee); // add employee to employees array
-
   }
     while (confirm("Add another"));
     return(employees); // return the array
-
 }
 
 // Display the average salary
-const displayAverageSalary = function(employeesArray) {
+const displayAverageSalary = function(employees) {
   const salaries = employees.map(employee => employee.salary);  // extracts the salaries out of the employees array
   const sumSalaries = salaries.reduce((total, salary) => total + salary, 0);  // adds the salaries together
   const averageSalary = sumSalaries / salaries.length;  // calculates the average
@@ -54,7 +40,7 @@ const displayAverageSalary = function(employeesArray) {
 }
 
 // Select a random employee
-const getRandomEmployee = function(employeesArray) {
+const getRandomEmployee = function(employees) {
   const random = employees [ Math.floor (Math.random() * employees.length)];  // get random employee
   console.log(`Congrats ${random.firstName} ${random.lastName}, you're the winner!`);
 }
