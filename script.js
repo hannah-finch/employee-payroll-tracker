@@ -7,9 +7,9 @@ const employees = []; // Empty array to put employee objects into
 const collectEmployees = function() {
   // repeats as long as confirm("Add another employee?") = true
   do {
-    let firstName = prompt('Enter first name');
-    let lastName = prompt('Enter last name');
-    let salary = prompt('Enter salary');  //change string to number, a word will default to 0
+    let firstName = prompt("Enter employee's first name");
+    let lastName = prompt("Enter employee's last name");
+    let salary = prompt("Enter employee's salary");  //change string to number, a word will default to 0
 
     if (isNaN(salary) || salary == "") {
       salary = 0;  // words and empty strings become 0
@@ -26,7 +26,7 @@ const collectEmployees = function() {
 
       employees.push(employee); // add employee to employees array
   }
-    while (confirm("Add another"));
+    while (confirm("Would you like to add another employee?"));
     return(employees); // return the array
 }
 
