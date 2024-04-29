@@ -4,6 +4,8 @@
 
 This application enables a payroll manager to view and manage employee payroll data. After entering employee data, the information is compiled into a chart. The average salary is calculated and displayed in the console, as well as a randomly selected employee of the month.
 
+The deployed application can be found here:  https://hannahschwen.github.io/employee-payroll-tracker/
+
 ## Usage
 
 To add employees to the Roster, click the blue "Add Employees" button. Several prompt boxes will pop up, asking for the employee's first name, last name, and salary. Do not include a '$' or other symbols or letters in the salary. If you do, the salary will default to 0. Then a prompt box will ask, "Would you like to add another employee?" Click yes to add another or click cancel to stop. You'll be re-prompted after each employee. When you finish adding employees, the data will appear in a chart, sorted from lowest salary to greatest. The average salary will be calculated and displayed in the browser's console, along with a randomly selected employee. To open the console, use the keyboard shortcut: "Ctrl + Shift + J" on Windows or "Cmd + Option + J" on a Mac.
